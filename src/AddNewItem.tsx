@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NewItemForm } from "./NewItemForm";
 import { AddItemButton } from "./styles";
 
 type AddNewItemProps = {
@@ -11,7 +12,14 @@ export const AddNewItem = ({onAdd, toggleButtonText, dark}: AddNewItemProps) => 
   const [ showForm, setShowForm ] = useState(false)
 
   if (showForm) {
-    // render form here
+    return (
+      <NewItemForm 
+        onAdd={(text) => {
+          onAdd(text);
+          setShowForm(false);
+        }}
+      />
+    )
   }
 
   return (
